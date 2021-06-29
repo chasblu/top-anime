@@ -1,26 +1,29 @@
 import { useState, useEffect } from "react"
+import Anime from "../Anime"
+import APIURL from "../../apiurl"
 
 export default function Top () {
     const  [topThreeImage, setTopThreeImage] = useState([])
 
-    const API = {
-        endpoint: 'https://api.jikan.moe/v3/top/anime',
-    }
-
     const getTopThree = async () => {
         try {
-        const res = await fetch(`${API.endpoint}`);
+        const res = await fetch(`${APIURL.path}${APIURL.search}${APIURL.order_by}${APIURL.sort}${APIURL.limit}`);
         const data = await res.json();
         console.log(data)
-        setTopThreeImage(data.top[0].title)
+        setTopThreeImage(data.results)
         }catch (err) {
             console.error(err);
         }
     }
     useEffect(() => {
         getTopThree();
-    })
+    },[])
+
     return (
-        <h2>{topThreeImage.top[0].title}</h2>
+        <div>
+            {topThreeImage.map((anime, i) => {
+                return <Anime anime={anime} key={i} />
+            })}
+        </div>
     )
 }
