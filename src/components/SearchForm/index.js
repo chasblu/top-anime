@@ -3,22 +3,29 @@ import APIURL from "../../apiurl"
 
 export default function SearchForm () {
     const [userInput, setUserInput] = useState('');
-    const [searchResults, setSearchResults] = useState(null)
+    const [searchResults, setSearchResults] = useState([])
+
+    
+    
+    const getSearchResults = async (input) => {
+        try {
+        const response = await fetch(`${APIURL.path}${APIURL.search}${input}&order_by=title${APIURL.sort}${APIURL.page}`);
+        const data = await response.json();
+            console.log(data)
+            setSearchResults(data.results)
+            console.log(data.results)
+        } catch(err) {
+            console.error(err)
+        } 
+    
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const getSearchResults = async () => {
-            try {
-            const response = await fetch(`${APIURL.path}${APIURL.search}${userInput}`);
-            const data = await response.json();
-                setSearchResults(data.results)
-                console.log(data.results)
-            } catch(err) {
-                console.error(err)
-            } 
-            
-    }
-    
+        if (userInput.length < 3)  {
+            getSearchResults('')
+        }
+        getSearchResults(userInput)
     }
 
     
@@ -30,7 +37,14 @@ export default function SearchForm () {
             <input id='search' type="text" placeholder='Search' onChange={(e) => setUserInput(e.target.value)} />
             <input type="submit" value="Find" />
         </form>
-        <h1>{searchResults}</h1>
+            <div>
+                {searchResults.map((anime) => {
+                    return (
+                        <h1 key={anime.mal_id}>{anime.title}</h1>
+                    )
+                })}
+            </div>
+        
         </>
         )
     

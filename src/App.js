@@ -4,6 +4,7 @@ import './App.css';
 
 import Top from './components/Top';
 import SearchForm from './components/SearchForm';
+import Categories from './components/Categories';
 
 
 function App() {
@@ -14,11 +15,16 @@ function App() {
             <h1>
               <Link to='/'>Top Anime</Link>
             </h1>
+            <h1>
+              <Link to='/categories'>Categories</Link>
+            </h1>
+
           </nav>
       </header>
       <main>
         <SearchForm />
         <Route path='/' exact render={() => <Top />} />
+        <Route path='/categories' exact render={() => <Categories />} />
       </main>
       <footer>
 

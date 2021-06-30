@@ -21,8 +21,8 @@ export default function Top () {
 
     return (
         <div>
-            {topThreeImage.map((anime, i) => {
-                return <Anime anime={anime} key={i} />
+            {topThreeImage.map((anime) => {
+                return <Anime anime={anime} key={anime.mal_id} />
             })}
         </div>
     )
