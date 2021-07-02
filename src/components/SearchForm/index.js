@@ -1,31 +1,33 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import APIURL from "../../apiurl"
 
-export default function SearchForm () {
+export default function SearchForm ({getSearchData}) {
     const [userInput, setUserInput] = useState('');
     const [searchResults, setSearchResults] = useState([])
 
     
     
     const getSearchResults = async (input) => {
-        try {
-        const response = await fetch(`${APIURL.path}${APIURL.search}${input}&order_by=title${APIURL.sort}${APIURL.page}`);
-        const data = await response.json();
-            console.log(data)
-            setSearchResults(data.results)
-            console.log(data.results)
-        } catch(err) {
-            console.error(err)
-        } 
+        if (input.length >= 3) {
+            try {
+                const response = await fetch(`${APIURL.path}${APIURL.search}${input}&order_by=title${APIURL.sort}${APIURL.page}/&genre_exclude=12,9`);
+                const data = await response.json();
+                console.log(data)
+                setSearchResults(data.results)
+                console.log(data.results)
+            } catch(err) {
+                console.error(err)
+            } 
+        }
     
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (userInput.length < 3)  {
-            getSearchResults('')
+            return getSearchResults(`${userInput}aaa`)
         }
-        getSearchResults(userInput)
+        return getSearchResults(userInput)
     }
 
     
@@ -33,14 +35,17 @@ export default function SearchForm () {
 
     return (<>
         <form onSubmit={handleSubmit}>
-            <label htmlFor='search'>Find:</label>
-            <input id='search' type="text" placeholder='Search' onChange={(e) => setUserInput(e.target.value)} />
-            <input type="submit" value="Find" />
+            <label htmlFor='search'>Search:</label>
+            <input className='search-field' id='search' type="text" placeholder='Search' onChange={(e) => setUserInput(e.target.value)} />
+            <input className='search-button' type="submit" value="Find" />
         </form>
             <div>
                 {searchResults.map((anime) => {
                     return (
-                        <h1 key={anime.mal_id}>{anime.title}</h1>
+                        <div className='search-results' key={anime.mal_id}>
+                            <img src={anime.image_url} alt={anime.title} />
+                            <a href={anime.url}>{anime.title}</a>
+                        </div>
                     )
                 })}
             </div>

@@ -1,4 +1,83 @@
+
 .App {
   text-align: center;
 }
+
+
+header {
+  background-color: black;
+  border: 2px solid white;
+  border-radius: 2rem;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+
+.top-container {
+  display: grid;  
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  margin-top:  100px;
+}
+
+.categories {
+  color: black;
+  display: inline;
+  padding: 20px;
+  align-items: center;
+}
+
+
+
+.category a {
+  color: black;
+
+}
+
+img {
+  border: 1px solid white;
+  border-radius: 2rem;
+}
+
+a {
+  color: white;
+  display: block;
+}
+
+.container a {
+  color: black;
+  font-weight: 500;
+}
+
+.search-button {
+  color: gold;
+  background-color: black;
+  width: 50px;
+  border: 1px solid white;
+}
+
+.search-field {
+  border: 1px solid white;
+  border-radius: 1rem;
+  width: 20rem;
+  color: gold;
+  background-color: black;
+  font-weight: 500;
+}
+
+.search-results a {
+  color: black;
+  font-weight: 500;
+}
+
+
+
+
+
 
