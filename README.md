@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# Top Anime
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Top Anime is a SPA that allows you to discover some of the best anime that has ever been produced in history
 
-## Available Scripts
+**link to site**  https://top-anime.netlify.app/
+**link to github** https://github.com/chasblu/top-anime 
 
-In the project directory, you can run:
 
-### `yarn start`
+### App Summary
+This app uses the jikon.moe API to generate anime data. On the home page the top 3 anime ranked by My Anime List(a popular anime site) are populated with links to the corresponding My Anime List page. There is a Category page that generates a list of 100 anime based on the category that you select.  The category results are displayed by popularity. There is a search page that allows you to search for your favorite anime and displays a list of 50 results that match by title. The search results are displayed by closest matching title.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Technologies Used
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- CSS: Grid, Flex
+- React: Functional components, React Router, React hooks(useState, useEffect), JSX 
+- Jikon API
+- Github
+- Netlify
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Installation Requirements
+- Clone repo from github 
+- Site uses yarn and React Router
 
-### `yarn build`
+### Contributions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+For additional contributions, requests, or suggestions email me at c.prit@ymail.com
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Lesson
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Originally I wanted the search feature to be apart of the main page but had to make it a separate route on the app in order to solve a problem i was having with hof the results were displaying
+- Need to start CSS way earlier and plan it better
 
-### `yarn eject`
+### Ongoing Issues 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Getting the search results to work on the home page so that it replaces the display on the home page but only when something is searched for
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- There was an error when searching with less that 3 characters.  I fixed it by adding an aaa to the search if the input is less that 3 characters. I feel like there is a better way to solve this problem then by setting the search to an empty string or 3 letters but didn't solve that problem

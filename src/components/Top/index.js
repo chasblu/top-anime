@@ -13,7 +13,6 @@ export default function Top() {
         `${APIURL.path}${APIURL.search}${APIURL.order_by}${APIURL.sort}${APIURL.limit}`
       );
       const data = await res.json();
-      console.log(data);
       setTopThreeImage(data.results);
     } catch (err) {
       console.error(err);

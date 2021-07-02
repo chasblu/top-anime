@@ -9,7 +9,6 @@ export default function Category ({ category }) {
             const res = await fetch(`${APIURL.path}genre/anime/${category.genre_id}`);
             const data = await res.json();
             setCategoryData(data.anime)
-            console.log({data})
         }catch(err) {
             console.error(err)
         }
